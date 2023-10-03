@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        body{
+            background-color: black;
+        }
+.main-div{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+     align-items: center;
+}
+
+.timer-div{
+    height: 300px;
+    width:500px;
+    background-color:yellowgreen;
+    text-align: center;
+    border-radius: 10px;
+}
+.heading{
+font-size: 35px;
+}
+.time-s{
+    font-size: 70px;
+}
+.btn{
+    height: 50px;
+    width: 120px;
+    background-color: green;
+    margin: 20px;
+    border-radius: 10px;
+}
+.btn2{
+    background-color: red;
+}
+    </style>
+</head>
+<body>
+    <div class="main-div">
+        <div class="timer-div">
+<p class="heading">Adif Timer</p>
+<span class="time-s" id="houre">00:</span>
+<span class="time-s" id="min">00:</span>
+<span class="time-s" id="sec">00</span> <br>
+<button class="btn" id="start">Start</button>
+<button class="btn btn2" id="stop">Stop</button>
+        </div>
+    </div>
+    <script>
+let houre= document.querySelector("#houre");
+let min= document.querySelector("#min");
+let sec= document.querySelector("#sec");
+let start= document.querySelector("#start");
+let stopb= document.querySelector("#stop");
+let num= 1;
+let minNum=0;
+let houreNum=0;
+let forStop;
+const timerFun  =()=>{
+let num= 1;
+forStop = setInterval(()=>{
+    if(num < 10){
+        sec.innerHTML=`0 ${num}`
+    } 
+    else{
+        sec.innerHTML=`${num}`
+    }
+    if( num == 60){
+        num = 0;
+        minNum+=1
+        console.log(num)
+    }
+if(minNum < 10){
+    min.innerHTML=`0${minNum}:`
+}
+else(
+    min.innerHTML=`${minNum}:`
+)
+if (minNum == 60){
+    minNum = 0;
+    houreNum  +=1
+}
+if( houreNum < 10){
+    houre.innerHTML=`0${houreNum}:`
+}
+else{
+    houre.innerHTML=`${houreNum}:`
+}
+                num++
+    }, 1000)
+}
+start.addEventListener("click", timerFun)
+stopb.addEventListener("click", ()=>{
+    console.log("click");
+    clearInterval(forStop)
+})
+    </script>
+</body>
+</html>
